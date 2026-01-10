@@ -1,30 +1,59 @@
-<div className="CharacterList">
+import { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-    <h1>Characters</h1>
-    
-<div class="card" style="width: 18rem;">
-  <img src="https://lumiere-a.akamaihd.net/v1/images/628cdaa1dbbde50001de0bd3-image_6c311046.jpeg?region=192%2C0%2C1152%2C864" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Obi-Wan Kenobi</h5>
-    <p class="card-text">Gender: Male Hair color: Eye color:</p>
-    <a href="#" class="btn btn-primary">Learn more!</a>
-  </div>
-  
-  <div class="card" style="width: 18rem;">
-  <img src="https://saberspro.com/cdn/shop/articles/anakin.jpg?crop=center&height=1200&v=1750086089&width=1200" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Anakin Skywalker</h5>
-    <p class="card-text">Gender: Male Hair color: Eye color:</p>
-    <a href="#" class="btn btn-primary">Learn more!</a>
-  </div>
+const CharacterList = () => {
+  const { store, actions } = useContext(Context);
 
-  <div class="card" style="width: 18rem;">
-  <img src="https://www.denofgeek.com/wp-content/uploads/2020/11/the-mandalorian-grogu-baby-yoda-name-origin.jpg?resize=768%2C432" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Grogu</h5>
-    <p class="card-text">Gender: Male Hair color: Eye color:</p>
-    <a href="#" class="btn btn-primary">Learn more!</a>
-  </div>
-</div>
-</div>
-</div>
+  useEffect(() => {
+    if (store.people.length === 0) {
+      actions.loadData();
+    }
+  }, []);
+
+  return (
+    <div className="container mt-4">
+      <h1 className="mb-3">Characters</h1>
+
+      <div className="d-flex flex-row overflow-auto">
+        {store.people.map((character) => (
+          <div
+            key={character.uid}
+            className="card me-3"
+            style={{ minWidth: "18rem" }}
+          >
+            <img
+              src={`https://starwars-visualguide.com/assets/img/characters/${character.uid}.jpg`}
+              className="card-img-top"
+              alt={character.name}
+              onError={(e) =>
+                (e.target.src = "https://via.placeholder.com/300x400")
+              }
+            />
+
+            <div className="card-body">
+              <h5 className="card-title">{character.name}</h5>
+
+              <div className="d-flex justify-content-between">
+                <Link
+                  to={`/details/people/${character.uid}`}
+                  className="btn btn-primary"
+                >
+                  Learn more!
+                </Link>
+
+                <button
+                  className="btn btn-outline-warning"
+                  onClick={() => actions.addFavorite(character.name)}
+                >
+                  ❤️
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default CharacterList;
