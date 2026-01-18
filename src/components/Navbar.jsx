@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useFavorites } from "../Context/FavoritesContext"; // :white_check_mark: Correct import
+import starwarsicons from "../assets/img/starwarsicons.png";
 const starWarsLogoUrl =
-  "https://loodibee.com/wp-content/uploads/Star-Wars-Logo-black-background.png";
-const decorativeImageUrl =
-  "https://preview.redd.it/who-do-you-think-had-the-best-faction-theme-v0-ulv9sfd1wedd1.png?width=480&format=png&auto=webp&s=ac36b39694da89e61a87be6d82e88badb3f7b68f";
+  "https://www.freepnglogos.com/uploads/star-wars-logo-3.png";
+const decorativeImageUrl = starwarsicons
 const Navbar = () => {
   const { favorites, removeFavorite } = useFavorites(); // :white_check_mark: Hook usage
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -20,13 +20,6 @@ const Navbar = () => {
         <Link to="/">
           <img src={starWarsLogoUrl} alt="Star Wars Logo" className="logo-img" />
         </Link>
-        <div className="nav-links">
-          <Link to="/characters" className="nav-link">Characters</Link>
-          <Link to="/planets" className="nav-link">Planets</Link>
-          <Link to="/species" className="nav-link">Species</Link>
-          <Link to="/starships" className="nav-link">Starships</Link>
-          <Link to="/vehicles" className="nav-link">Vehicles</Link>
-        </div>
         <img
           src={decorativeImageUrl}
           alt="Decorative Image"

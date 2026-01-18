@@ -1,11 +1,11 @@
 import React from 'react';
-
+import {useFavorites} from '../Context/FavoritesContext';
 
 import '../style/ItemCard.css';
 
 const ItemCard = ({ item, type, onLearnMore }) => {
   
-  const { addFavorites } = useFavorites();
+  const { addFavorite } = useFavorites();
 
   
   const getImageUrl = () => {
