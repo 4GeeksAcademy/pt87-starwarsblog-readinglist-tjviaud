@@ -82,13 +82,26 @@ const Home = () => {
     
     fetchAllData();
   }, []); 
-  const handleLearnMore = (item, type) => {
-    
-    setSelectedItem(item);
-    
-    setSelectedType(type);
-    
-    setIsModalOpen(true);
+  const handleLearnMore = async (item, type) => {
+    try {
+      // Fetch detailed data from the item's URL
+      const response = await fetch(item.url);
+      const data = await response.json();
+      
+      // Extract the result which contains properties
+      const detailedItem = data.result;
+      
+      // Set the detailed item with properties
+      setSelectedItem(detailedItem);
+      setSelectedType(type);
+      setIsModalOpen(true);
+    } catch (error) {
+      console.error('Error fetching item details:', error);
+      // Fallback to basic item if fetch fails
+      setSelectedItem(item);
+      setSelectedType(type);
+      setIsModalOpen(true);
+    }
   };
 
   

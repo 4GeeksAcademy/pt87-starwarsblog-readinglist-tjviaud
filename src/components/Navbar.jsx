@@ -9,7 +9,9 @@ const Navbar = () => {
   const { favorites, removeFavorite } = useFavorites(); // :white_check_mark: Hook usage
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggleDropdown = () => {
+    console.log('Toggle clicked! Current state:', dropdownOpen);
     setDropdownOpen(!dropdownOpen);
+    console.log('New state will be:', !dropdownOpen);
   };
   if (!favorites) {
     return <div>Loading...</div>;
@@ -26,10 +28,16 @@ const Navbar = () => {
           className="decorative-image"
         />
         <div className="ml-auto">
-          <button className="btn btn-primary" onClick={toggleDropdown}>
+          <button 
+            className="btn btn-primary" 
+            onClick={toggleDropdown}
+            type="button"
+          >
             Favorites ({favorites.length})
           </button>
-          <div className={`dropdown-menu ${dropdownOpen ? "open" : ""}`}>
+          <div 
+            className={`dropdown-menu ${dropdownOpen ? "open" : ""}`}
+          >
             {favorites.length > 0 ? (
               <ul>
                 {favorites.map((item, index) => (

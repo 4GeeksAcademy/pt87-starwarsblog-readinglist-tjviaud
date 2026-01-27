@@ -1,0 +1,183 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Navbar Dropdown Styles */
+.navbar {
+  position: relative;
+  padding: 1rem 0;
+  background-color: #000;
+  border-bottom: 2px solid #ffe81f;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.logo-img {
+  height: 60px;
+  width: auto;
+}
+
+.decorative-image {
+  height: 50px;
+  width: auto;
+  margin: 0 1rem;
+}
+
+.ml-auto {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .btn,
+.btn {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.navbar .btn-primary,
+.btn-primary {
+  background-color: #ffe81f !important;
+  color: #000 !important;
+  border: 2px solid #ffe81f !important;
+}
+
+.navbar .btn-primary:hover,
+.btn-primary:hover {
+  background-color: #ffd700 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 232, 31, 0.3);
+}
+
+/* Dropdown Menu Styles */
+.navbar .dropdown-menu,
+.dropdown-menu {
+  position: absolute !important;
+  top: calc(100% + 10px) !important;
+  right: 0 !important;
+  background-color: #1a1a1a !important;
+  border: 2px solid #ffe81f !important;
+  border-radius: 8px !important;
+  min-width: 300px !important;
+  max-width: 400px !important;
+  max-height: 400px !important;
+  overflow-y: auto !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8) !important;
+  z-index: 9999 !important;
+  
+  /* Hidden by default */
+  display: none !important;
+}
+
+/* Visible when open */
+.navbar .dropdown-menu.open,
+.dropdown-menu.open {
+  display: block !important;
+}
+
+.dropdown-menu ul {
+  list-style: none !important;
+  padding: 0.5rem 0 !important;
+  margin: 0 !important;
+}
+
+.dropdown-menu li {
+  padding: 0.75rem 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  border-bottom: 1px solid #333 !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.dropdown-menu li:last-child {
+  border-bottom: none !important;
+}
+
+.dropdown-menu li:hover {
+  background-color: #2a2a2a !important;
+}
+
+.dropdown-menu li a {
+  color: #ffe81f !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  flex-grow: 1 !important;
+  transition: color 0.2s ease !important;
+}
+
+.dropdown-menu li a:hover {
+  color: #ffd700 !important;
+  text-decoration: underline !important;
+}
+
+.dropdown-menu .remove-btn {
+  background-color: #ff4444 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-left: 10px !important;
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.dropdown-menu .remove-btn:hover {
+  background-color: #cc0000 !important;
+  transform: scale(1.1) !important;
+}
+
+.dropdown-menu .empty-favorites {
+  padding: 1.5rem !important;
+  text-align: center !important;
+  color: #888 !important;
+  font-style: italic !important;
+}
+
+/* Scrollbar styling for dropdown */
+.dropdown-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: #ffe81f;
+  border-radius: 4px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: #ffd700;
+}
