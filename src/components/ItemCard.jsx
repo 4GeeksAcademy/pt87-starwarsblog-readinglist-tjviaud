@@ -3,6 +3,8 @@ import {useFavorites} from '../Context/FavoritesContext';
 
 import '../style/ItemCard.css';
 
+const FALLBACK_IMAGE = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23e5e7eb'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-family='Arial, sans-serif' font-size='24'%3ENo Image%3C/text%3E%3C/svg%3E";
+
 const ItemCard = ({ item, type, onLearnMore }) => {
   
   const { addFavorite } = useFavorites();
@@ -31,7 +33,7 @@ const ItemCard = ({ item, type, onLearnMore }) => {
         return `${baseUrl}/vehicles/${item.uid}.jpg`;
       
       default:
-        return 'https://via.placeholder.com/300x400?text=No+Image';
+        return FALLBACK_IMAGE;
     }
   };
 
@@ -71,7 +73,8 @@ const ItemCard = ({ item, type, onLearnMore }) => {
           className="card-image"
           
           onError={(e) => {
-            e.target.src = 'https://via.placeholder.com/300x400?text=No+Image';
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = FALLBACK_IMAGE;
           }}
         />
       </div>
